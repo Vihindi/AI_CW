@@ -1,0 +1,412 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:mechanicalEngineering="http://www.linkeddatatools.com/mechanicalEngineering">
+
+    <!-- Standard namespace for rdf -->
+
+    <!-- namespace for rdf - now we say this might be an ontology
+         rdfs - now rdfs also used there might be categorical sub, super classes
+          owl - now their is an ontology coming up
+           dc - general purpose ontology -->
+
+    <!-- OWL Header  -->
+    <owl:Ontology rdf:about="http://www.linkeddatatools.com/mechanicalEngineering">
+        <dc:title> MechanicalEngineering </dc:title>
+        <dc:description>Mechanical Engineering Ontology </dc:description>
+    </owl:Ontology>
+
+   
+    <!-- OWL Class Definition (Thing) -->
+    <owl:Class rdf:about="http://www.w3.org/2002/07/owl#Thing">
+        <rdfs:label>Thing</rdfs:label>
+        <rdfs:comment>Superclass for all classes</rdfs:comment>
+    </owl:Class>
+
+    <!-- OWL Class Definition (Mechanical Engineering) -->
+    <owl:Class rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#MechanicalEngineering">
+        <rdfs:label>MechanicalEngineering</rdfs:label>
+        <rdfs:comment>Mechanical Engineering</rdfs:comment>
+        <rdf:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    </owl:Class>
+
+    <!-- OWL Subclass Definition (Engineering Design) -->
+    <owl:Class rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringDesign">
+        <rdfs:subClassOf rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#MechanicalEngineering"/>
+        <rdfs:label>EngineeringDesign</rdfs:label>
+        <rdfs:comment>Subclass of MechanicalEngineering</rdfs:comment>
+    </owl:Class>
+
+
+
+    <!-- OWL Subclass Definition (Engineering Design: Product Performance) -->
+    <owl:Class rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#ProductPerformance">
+        <rdfs:subClassOf rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringDesign"/>
+        <rdfs:label>ProductPerformance</rdfs:label>
+        <rdfs:comment>Subclass of EngineeringDesign</rdfs:comment>
+    </owl:Class>
+
+    <!-- Define the Object property -->
+    <owl:ObjectProperty rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#analyzes"/>
+
+    <!-- Define the mechanicalSystems class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#mechanicalSystems">
+    <!-- mechanicalSystems  is an individual (instance) of the ProductPerformance class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#ProductPerformance"/>
+    <!-- mechanicalSystems analyzes knowledge discovery -->
+    <mechanicalEngineering:analyzes rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringKnowledgeDiscovery"/>
+    </rdf:Description>
+
+    <!-- Define the Object property -->
+    <owl:ObjectProperty rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#enables"/>
+
+    <!-- Define the Innovation class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#Innovation">
+    <!-- Innovation  is an individual (instance) of the EngineeringDesign class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringDesign"/>
+    <!-- Innovation enables knowledge discovery -->
+    <mechanicalEngineering:enables rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringKnowledgeDiscovery"/>
+    </rdf:Description>
+
+     <!-- OWL Subclass Definition (Engineering Design: Simulation) -->
+    <owl:Class rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#Simulation">
+        <rdfs:subClassOf rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringDesign"/>
+        <rdfs:label>Simulation</rdfs:label>
+        <rdfs:comment>Subclass of EngineeringDesign</rdfs:comment>
+    </owl:Class>
+
+     <!-- OWL Subclass Definition ( Simulation: FineTuneElements) -->
+    <owl:Class rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#FineTuneElements">
+        <rdfs:subClassOf rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#Simulation"/>
+        <rdfs:label>FineTuneElements</rdfs:label>
+        <rdfs:comment>Subclass of Simulation</rdfs:comment>
+    </owl:Class>
+
+    <!-- Define the object property -->
+    <owl:ObjectProperty rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#simulates"/>
+
+    <!-- Define the VibrationAnalysis class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#VibrationAnalysis">
+    <!--VibrationAnalysis is an individual (instance) of the FineTuneElements class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#FineTuneElements"/>
+     <mechanicalEngineering:simulates rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#mechanicalSytems"/>
+    </rdf:Description>
+
+    <!-- Define the ThermalAnalysis class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#ThermalAnalysis">
+    <!--StressAnalysis is an individual (instance) of the FineTuneElements class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#FineTuneElements"/>
+     <mechanicalEngineering:simulates rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#mechanicalSytems"/>
+    </rdf:Description>
+
+    <!-- Define the StressAnalysis class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#StressAnalysis">
+    <!--StressAnalysis is an individual (instance) of the FineTuneElements class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#FineTuneElements"/>
+     <mechanicalEngineering:simulates rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#mechanicalSytems"/>
+    </rdf:Description>
+
+
+     <!-- OWL Subclass Definition ( Simulation: materialSolution) -->
+    <owl:Class rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#materialSolution">
+        <rdfs:subClassOf rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#Simulation"/>
+        <rdfs:label>materialSolution</rdfs:label>
+        <rdfs:comment>Subclass of Simulation</rdfs:comment>
+    </owl:Class>
+
+    <!-- Define the DesignValidator class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#DesignValidator">
+    <!--DesignValidator is an individual (instance) of the Simulation class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#Simulation"/>
+    </rdf:Description>
+
+
+    <!-- Define the cost class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#cost">
+    <!--cost  is an individual (instance) of the materialSolution class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#materialSolution"/>
+    </rdf:Description>
+
+    <!-- OWL Subclass Definition (Engineering Design: DesignProcess) -->
+    <owl:Class rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#DesignProcess">
+        <rdfs:subClassOf rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringDesign"/>
+        <rdfs:label>DesignProcess</rdfs:label>
+        <rdfs:comment>Subclass of EngineeringDesign</rdfs:comment>
+    </owl:Class>
+
+    <!-- Define the prototyping class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#prototyping">
+    <!--prototyping  is an individual (instance) of the DesignProcess class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#DesignProcess"/>
+    </rdf:Description>
+
+    <!-- Define the MultiDisiplinaryOptimization class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#MultiDisiplinaryOptimization">
+    <!--MultiDisiplinaryOptimization  is an individual (instance) of the DesignProcess class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#DesignProcess"/>
+    </rdf:Description>
+
+     <!-- Define the object property -->
+    <owl:ObjectProperty rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#involves"/>
+
+    <!-- Define the RequirementAnalysis class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#RequirementAnalysis">
+    <!--RequirementAnalysis is an individual (instance) of the DesignProcess class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#DesignProcess"/>
+     <mechanicalEngineering:involves rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#conceptualDesign"/>
+    </rdf:Description>
+
+    <!-- OWL Subclass Definition (DesignProcess: conceptualDesign) -->
+    <owl:Class rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#conceptualDesign">
+        <rdfs:subClassOf rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#DesignProcess"/>
+        <rdfs:label>conceptualDesign</rdfs:label>
+        <rdfs:comment>Subclass of DesignProcess</rdfs:comment>
+    </owl:Class>
+
+    <!-- Define the Ideation class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#Ideation">
+    <!--Ideation  is an individual (instance) of the conceptualDesign class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#conceptualDesign"/>
+    </rdf:Description>
+
+     <!-- Define the Sustainability class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#Sustainability">
+    <!--Sustainability is an individual (instance) of the EngineeringDesign class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringDesign"/>
+    </rdf:Description>
+
+
+
+    <!-- OWL Subclass Definition (Engineering Knowledge Discovery) -->
+    <owl:Class rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringKnowledgeDiscovery">
+        <rdfs:subClassOf rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#MechanicalEngineering"/>
+        <rdfs:label>EngineeringKnowledgeDiscovery</rdfs:label>
+        <rdfs:comment>Subclass of MechanicalEngineering</rdfs:comment>
+    </owl:Class>
+
+     <!-- Define the object property -->
+    <owl:ObjectProperty rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#follows"/>
+
+    <!-- Define the ProductDesign class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#ProductDesign">
+    <!--ProductDesign  is an individual (instance) of the EngineeringKnowledgeDiscovery class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringKnowledgeDiscovery"/>
+    <mechanicalEngineering:follows rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#DesignProcess"/>
+    </rdf:Description>
+
+    <!-- OWL Subclass Definition (Engineering Knowledge Discovery: KnowledgeExtraction) -->
+    <owl:Class rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#KnowledgeExtraction">
+        <rdfs:subClassOf rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringKnowledgeDiscovery"/>
+        <rdfs:label>KnowledgeExtraction</rdfs:label>
+        <rdfs:comment>Subclass of EngineeringKnowledgeDiscovery</rdfs:comment>
+    </owl:Class>
+
+     <!-- Define the object property -->
+    <owl:ObjectProperty rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#applies"/>
+
+    <!-- Define the machineLearning class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#machineLearning">
+    <!--machineLearning  is an individual (instance) of the KnowledgeExtraction class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#KnowledgeExtraction"/>
+    <mechanicalEngineering:applies rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringQualityCntrol"/>
+    </rdf:Description>
+
+     <!-- Define the object property -->
+    <owl:ObjectProperty rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#utilizes"/>
+
+    <!-- Define the DataMining class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#DataMining">
+    <!--DataMining  is an individual (instance) of the KnowledgeExtraction class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#KnowledgeExtraction"/>
+    <mechanicalEngineering:utilizes rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringQualityCntrol"/>
+    </rdf:Description>
+
+    <!-- Define the ontology class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#ontology">
+    <!--ontology  is an individual (instance) of the KnowledgeExtraction class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#KnowledgeExtraction"/>
+    </rdf:Description>
+
+     <!-- Define the object property -->
+    <owl:ObjectProperty rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#optimizes"/>
+    <!-- Define the DataIntegration class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#DataIntegration">
+    <!--DataMining  is an individual (instance) of the KnowledgeExtraction class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringKnowledgeDiscovery"/>
+    <mechanicalEngineering:optimizes rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#Manufacturing"/>
+    </rdf:Description>
+
+    <!-- Define the SemanticSearch class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#SemanticSearch">
+    <!--SemanticSearch  is an individual (instance) of the KnowledgeExtraction class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringKnowledgeDiscovery"/>
+    <mechanicalEngineering:analyzes rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringQualityCntrol"/>
+    </rdf:Description>
+
+     <!-- Define the FeatureSelection class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#FeatureSelection">
+    <!--FeatureSelection is an individual (instance) of the EngineeringKnowledgeDiscovery class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringKnowledgeDiscovery"/>
+    </rdf:Description>
+
+
+
+
+
+    <!-- OWL Subclass Definition (Engineering Quality Control) -->
+    <owl:Class rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringQualityCntrol">
+        <rdfs:subClassOf rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#MechanicalEngineering"/>
+        <rdfs:label>EngineeringQualityCntrol</rdfs:label>
+        <rdfs:comment>Subclass of MechanicalEngineering</rdfs:comment>
+    </owl:Class>
+
+     <!-- Define the RootCauseAnalysis class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#RootCauseAnalysis">
+    <!--RootCauseAnalysis is an individual (instance) of the EngineeringQualityCntrol class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringQualityCntrol"/>
+    </rdf:Description>
+
+     <!-- Define the SupplyQualityManagement class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#SupplyQualityManagement">
+    <!--SupplyQualityManagement is an individual (instance) of the EngineeringQualityCntrol class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringQualityCntrol"/>
+    </rdf:Description>
+
+     <!-- Define the object property -->
+    <owl:ObjectProperty rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#control"/>
+
+    <!-- Define the TrackingQualityParameters class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#TrackingQualityParameters">
+    <!--TrackingQualityParameters  is an individual (instance) of the EngineeringQualityCntrol class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringQualityCntrol"/>
+    <mechanicalEngineering:control rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringManufacturing"/>
+    </rdf:Description>
+
+    <!-- OWL Subclass Definition (Engineering Quality Control: Compliance_with_industry_resolution) -->
+    <owl:Class rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#Compliance_with_industry_resolution">
+        <rdfs:subClassOf rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringQualityCntrol"/>
+        <rdfs:label>Compliance_with_industry_resolution</rdfs:label>
+        <rdfs:comment>Subclass of EngineeringQualityCntrol</rdfs:comment>
+    </owl:Class>
+
+     <!-- Define the object property -->
+    <owl:ObjectProperty rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#BenifitedFrom"/>
+
+    <!-- Define the ProductQuality class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#ProductQuality">
+    <!--TrackingQualityParameters  is an individual (instance) of the EngineeringQualityCntrol class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#Compliance_with_industry_resolution"/>
+    <mechanicalEngineering:BenifitedFrom rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringKnowledgeDiscovery"/>
+    </rdf:Description>
+
+     <!-- Define the object property -->
+    <owl:ObjectProperty rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#CotributeTo"/>
+
+    <!-- Define the ProductState class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#ProductState">
+    <!--ProductState  is an individual (instance) of the EngineeringQualityCntrol class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#Compliance_with_industry_resolution"/>
+    <mechanicalEngineering:CotributeTo rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringKnowledgeDiscovery"/>
+    </rdf:Description>
+
+     <!-- Define the InceptionProcess class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#InceptionProcess">
+    <!--InceptionProcess  is an individual (instance) of the EngineeringQualityCntrol class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringQualityCntrol"/>
+    </rdf:Description>
+
+
+    <!-- OWL Subclass Definition (Engineering Education and training) -->
+    <owl:Class rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringEducationAndTraining">
+        <rdfs:subClassOf rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#MechanicalEngineering"/>
+        <rdfs:label>EngineeringEducationAndTraining</rdfs:label>
+        <rdfs:comment>Subclass of MechanicalEngineering</rdfs:comment>
+    </owl:Class>
+
+
+     <!-- Define the Research class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#Research">
+    <!--Research  is an individual (instance) of the EngineeringEducationAndTraining class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringEducationAndTraining"/>
+    <mechanicalEngineering:CotributeTo rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringKnowledgeDiscovery"/>
+    </rdf:Description>
+
+     <!-- Define the DynamicsAndControls class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#DynamicsAndControls">
+    <!--DynamicsAndControls  is an individual (instance) of the EngineeringEducationAndTraining class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringEducationAndTraining"/>
+    <mechanicalEngineering:optimizes rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringQualityCntrol"/>
+    </rdf:Description>
+
+     <!-- Define the object property -->
+    <owl:ObjectProperty rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#integratesWith"/>
+
+     <!-- Define the mechatronics class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#mechatronics">
+    <!--mechatronics  is an individual (instance) of the EngineeringEducationAndTraining class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringEducationAndTraining"/>
+    <mechanicalEngineering:integratesWith rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#ManufacturingProcess"/>
+    </rdf:Description>
+
+    <!-- Define the TrainingProgram class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#TrainingProgram">
+    <!--TrainingProcess  is an individual (instance) of the EngineeringEducationAndTraining class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringEducationAndTraining"/>
+    </rdf:Description>
+
+    <!-- Define the skills class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#skills">
+    <!--skills  is an individual (instance) of the EngineeringEducationAndTraining class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringEducationAndTraining"/>
+    </rdf:Description>
+
+    <!-- Define the resources class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#resources">
+    <!--resources  is an individual (instance) of the EngineeringEducationAndTraining class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringEducationAndTraining"/>
+    </rdf:Description>
+
+
+     <!-- OWL Subclass Definition (Engineering Manufacturing) -->
+    <owl:Class rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringManufacturing">
+        <rdfs:subClassOf rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#MechanicalEngineering"/>
+        <rdfs:label>EngineeringManufacturing</rdfs:label>
+        <rdfs:comment>Subclass of MechanicalEngineering</rdfs:comment>
+    </owl:Class>
+
+     <!-- Define the ManufacturingProcess class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#ManufacturingProcess">
+    <!--ManufacturingProcess  is an individual (instance) of the EngineeringManufacturing class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringManufacturing"/>
+    </rdf:Description>
+
+
+    <!-- Define the ProductEngineering class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#ProductEngineering">
+    <!--ProductEngineering  is an individual (instance) of the EngineeringManufacturing class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringManufacturing"/>
+    <mechanicalEngineering:follows rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#DesignProcess"/>
+    </rdf:Description>
+
+         <!-- Define the object property -->
+    <owl:ObjectProperty rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#educates"/>
+
+    <!-- Define the AutomationAndRobotics class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#AutomationAndRobotics">
+    <!--ManufacturingProcess  is an individual (instance) of the EngineeringManufacturing class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringManufacturing"/>
+    <mechanicalEngineering:educates rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringEducationAndTraining"/>
+    </rdf:Description>
+
+   <!-- Define the MaterialEngineering class instance -->
+    <rdf:Description rdf:about="http://www.linkeddatatools.com/mechanicalEngineering#MaterialEngineering">
+    <!--MaterialEngineering  is an individual (instance) of the EngineeringManufacturing class -->
+    <rdf:type rdf:resource="http://www.linkeddatatools.com/mechanicalEngineering#EngineeringManufacturing"/>
+    </rdf:Description>
+
+    
+
+
+</rdf:RDF>
